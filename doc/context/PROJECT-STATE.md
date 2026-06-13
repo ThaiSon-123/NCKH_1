@@ -49,7 +49,7 @@ Tài liệu **sống** ghi nhận dự án đang ở đâu trong vòng đời. C
 
 | Tài liệu                              | Trạng thái   | Ghi chú                                              |
 | :------------------------------------ | :----------- | :--------------------------------------------------- |
-| `00-quy-chuan.md`                     | Draft v1.1.0 | Chuẩn trình bày — ổn định, dùng làm gốc.            |
+| `00-quy-chuan.md`                     | Draft v2.0.0 | Rút gọn; thêm §2 Chuẩn nền; dùng làm gốc.            |
 | `01-srs.md`                           | Draft v0.4.0 | Đầy đủ UC/FR/NFR/AI; glossary & traceability đã tách ra context. |
 | `02-hld.md` … `09-…`                  | Trống        | Chưa viết.                                           |
 | `10-architecture-decision-record.md`  | Draft v0.1.0 | ADR-001 (Proposed), ADR-002 (Accepted).             |

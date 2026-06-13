@@ -49,26 +49,27 @@ Mỗi quyết định là một mục theo format Michael Nygard: `Status`, `Con
 
 **Status:** Accepted (2026-06-13).
 
-**Context:** [`01-srs.md`](01-srs.md) chứa Glossary (§18) và Ma trận truy ngược (§19). Hai phần này mang tính **dùng chung xuyên tài liệu**: glossary được mọi tài liệu SDLC tham chiếu; ma trận truy ngược liên kết UC/FR/NFR/AI và sẽ được nhiều tài liệu cập nhật. Giữ chúng trong SRS gây nhân bản và làm SRS phình to. [`00-quy-chuan.md §10`](00-quy-chuan.md#10-truy-ngược-traceability) quy định ma trận truy ngược "duy trì ở phần cuối của `01-srs.md`", và [`§14`](00-quy-chuan.md#14-quy-ước-thuật-ngữ-glossary) quy định glossary thống nhất trong `01-srs.md §glossary`.
+**Context:** [`01-srs.md`](01-srs.md) chứa Glossary (§18) và Ma trận truy ngược (§19). Hai phần này mang tính **dùng chung xuyên tài liệu**: glossary được mọi tài liệu SDLC tham chiếu; ma trận truy ngược liên kết UC/FR/NFR/AI và sẽ được nhiều tài liệu cập nhật. Giữ chúng trong SRS gây nhân bản và làm SRS phình to. Phiên bản `00-quy-chuan` v1.x ban đầu quy định ma trận truy ngược "duy trì ở phần cuối của `01-srs.md`" và glossary thống nhất trong `01-srs.md`; nay đã được chuẩn hoá tại [`§8`](00-quy-chuan.md#8-truy-ngược-traceability) và [`§11`](00-quy-chuan.md#11-quy-ước-thuật-ngữ).
 
 **Decision:**
 
 - Chuyển Glossary sang [`../context/GLOSSARY.md`](../context/GLOSSARY.md) làm **nguồn sự thật duy nhất** cho thuật ngữ; mọi tài liệu liên kết về đây.
 - Chuyển Ma trận truy ngược sang [`../context/DOMAIN-MAP.md`](../context/DOMAIN-MAP.md) làm bản duy trì chính thức.
-- **Giữ** mục `Tham chiếu` trong `01-srs.md` (đổi số thành §18) — không vi phạm [`00-quy-chuan.md §4.4`](00-quy-chuan.md#44-mục-tham-chiếu-cuối-tài-liệu-bắt-buộc).
+- **Giữ** mục `Tham chiếu` trong `01-srs.md` (đổi số thành §18) — không vi phạm [`00-quy-chuan.md §4.4`](00-quy-chuan.md#44-mục-tham-chiếu-cuối-file).
 - Cập nhật [`../agents.md`](../agents.md) để chỉ rõ vị trí mới của glossary & traceability.
+- Cập nhật [`00-quy-chuan.md`](00-quy-chuan.md) lên v2.0.0: §8 (truy ngược) và §11 (quy ước thuật ngữ) trỏ tới vị trí trung tâm — quyết định được **hợp thức hoá ở mức chuẩn**, không còn là ngoại lệ.
 
 **Consequences:**
 
 - _Tích cực:_ một nguồn glossary/traceability dùng chung; SRS gọn hơn; tránh hai bản lệch nhau.
-- _Tiêu cực (chấp nhận):_ lệch `00-quy-chuan §10` và `§14` về _vị trí_. Giảm thiểu bằng: (a) liên kết hai chiều rõ ràng giữa SRS ↔ context; (b) `agents.md` chỉ dẫn vị trí mới; (c) ADR này là bản ghi ngoại lệ.
+- _Đánh đổi:_ nội dung nằm ngoài SRS nên người đọc cần một bước nhảy link. Giảm thiểu bằng: (a) liên kết hai chiều SRS ↔ context; (b) `agents.md` chỉ dẫn vị trí; (c) `00-quy-chuan §8/§11` đã trỏ tới vị trí trung tâm.
 - _Điều kiện quay lại tuân thủ:_ nếu sau này quyết gộp lại vào SRS, đưa nội dung trở về §18/§19 và đặt `Status: Superseded`.
 
 ---
 
 ## 4. Tham chiếu
 
-- [`00-quy-chuan.md`](00-quy-chuan.md) — §10 truy ngược, §14 glossary, §13.2 quy trình khi vi phạm nguyên tắc.
+- [`00-quy-chuan.md`](00-quy-chuan.md) — §8 truy ngược, §11 quy ước thuật ngữ.
 - [`01-srs.md`](01-srs.md) — tài liệu chịu tác động của ADR-002.
 - [`../context/GLOSSARY.md`](../context/GLOSSARY.md), [`../context/DOMAIN-MAP.md`](../context/DOMAIN-MAP.md) — vị trí mới.
 - Michael Nygard, "Documenting Architecture Decisions" (2011).

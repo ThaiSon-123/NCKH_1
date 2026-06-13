@@ -81,7 +81,7 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 - **Đặc tả use case** — mỗi use case có ID `UC-XXX`, actor chính, tiền điều
   kiện, luồng chính, luồng phụ, hậu điều kiện.
 - **Yêu cầu chức năng** `FR-XXX` — phát biểu theo "Hệ thống **PHẢI** ..." (xem
-  RFC 2119 trong `00-quy-chuan.md §rfc2119`). Mỗi FR ánh xạ tới ≥ 1 UC.
+  RFC 2119 trong [`00-quy-chuan.md §2`](SDLC/00-quy-chuan.md#2-chuẩn-nền)). Mỗi FR ánh xạ tới ≥ 1 UC.
 - **Yêu cầu phi chức năng** `NFR-XXX` — hiệu năng, khả dụng, bảo mật, đa người
   dùng đồng thời, độ chính xác AI (chỉ số định lượng).
 - **Yêu cầu cho năng lực AI** `AI-XXX` — **mỗi năng lực AI bắt buộc có 1 chỉ số
@@ -201,7 +201,7 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 2. **Mọi yêu cầu/quyết định có ID** (`FR-XXX`, `UC-XXX`, `ADR-XXX`, ...).
 3. **Mọi tham chiếu chéo dùng link Markdown** đến đúng anchor — không "xem ở
    tài liệu khác" chung chung.
-4. **Diagram dùng Mermaid** khi có thể (xem `00-quy-chuan.md §diagram`).
+4. **Diagram dùng Mermaid** khi có thể (xem [`00-quy-chuan.md §6`](SDLC/00-quy-chuan.md#6-sơ-đồ)).
 5. **Bảng dùng cho danh sách có cấu trúc** (≥ 3 cột, ≥ 3 hàng); danh sách ngắn
    thì dùng bullet.
 6. **Không sao chép văn bản** giữa các tài liệu — _liên kết_, đừng _nhân bản_.

@@ -25,7 +25,7 @@
 
 ---
 
-Đây là **nguồn sự thật duy nhất** cho thuật ngữ của dự án NCKH_1 (tinh thần [`00-quy-chuan.md §14`](../SDLC/00-quy-chuan.md#14-quy-ước-thuật-ngữ-glossary)). Các tài liệu khác **liên kết** về đây thay vì nhân bản định nghĩa. Thuật ngữ kỹ thuật giữ nguyên tiếng Anh, kèm chú thích lần đầu.
+Đây là **nguồn sự thật duy nhất** cho thuật ngữ của dự án NCKH_1 (tinh thần [`00-quy-chuan.md §11`](../SDLC/00-quy-chuan.md#11-quy-ước-thuật-ngữ)). Các tài liệu khác **liên kết** về đây thay vì nhân bản định nghĩa. Thuật ngữ kỹ thuật giữ nguyên tiếng Anh, kèm chú thích lần đầu.
 
 ---
 
@@ -82,6 +82,6 @@
 ## 4. Tham chiếu
 
 - [`../SDLC/01-srs.md`](../SDLC/01-srs.md) — tài liệu yêu cầu phần mềm sử dụng các thuật ngữ này.
-- [`../SDLC/00-quy-chuan.md`](../SDLC/00-quy-chuan.md) — §14 quy ước thuật ngữ.
+- [`../SDLC/00-quy-chuan.md`](../SDLC/00-quy-chuan.md) — §11 quy ước thuật ngữ.
 - [`DOMAIN-MAP.md`](DOMAIN-MAP.md) — bản đồ miền & ma trận truy ngược.
 - [`../SDLC/10-architecture-decision-record.md`](../SDLC/10-architecture-decision-record.md) — ADR-002 (lý do tách glossary ra context).

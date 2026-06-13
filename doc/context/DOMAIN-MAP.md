@@ -121,5 +121,5 @@ Sơ đồ ER mức cao: [`01-srs.md §9`](../SDLC/01-srs.md#9-mô-hình-dữ-li�
 - [`../SDLC/01-srs.md`](../SDLC/01-srs.md) — đặc tả yêu cầu (UC, FR, NFR, AI).
 - [`GLOSSARY.md`](GLOSSARY.md) — định nghĩa thuật ngữ.
 - [`PROJECT-STATE.md`](PROJECT-STATE.md) — trạng thái dự án & gap cần bổ sung.
-- [`../SDLC/00-quy-chuan.md`](../SDLC/00-quy-chuan.md) — §10 truy ngược.
+- [`../SDLC/00-quy-chuan.md`](../SDLC/00-quy-chuan.md) — §8 truy ngược.
 - [`../SDLC/10-architecture-decision-record.md`](../SDLC/10-architecture-decision-record.md) — ADR-002.

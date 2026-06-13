@@ -63,7 +63,7 @@ Người hướng dẫn, nhóm phát triển, người duyệt tài liệu, và 
 
 ### 3.3. Định nghĩa từ khoá nghĩa vụ
 
-Tài liệu này tuân theo RFC 2119 / RFC 8174 ([`00-quy-chuan.md §6`](00-quy-chuan.md#6-mức-độ-nghĩa-vụ-rfc-2119--rfc-8174)). Các từ khoá **PHẢI**, **KHÔNG ĐƯỢC**, **NÊN**, **KHÔNG NÊN**, **CÓ THỂ** được dùng đúng nghĩa kỹ thuật và viết hoa trong toàn tài liệu.
+Tài liệu này tuân theo RFC 2119 / RFC 8174 ([`00-quy-chuan.md §2`](00-quy-chuan.md#2-chuẩn-nền)). Các từ khoá **PHẢI**, **KHÔNG ĐƯỢC**, **NÊN**, **KHÔNG NÊN**, **CÓ THỂ** được dùng đúng nghĩa kỹ thuật và viết hoa trong toàn tài liệu.
 
 ### 3.4. Tài liệu tham chiếu
 
@@ -941,7 +941,7 @@ stateDiagram-v2
 ## 18. Tham chiếu
 
 - [`../../CLAUDE.md`](../../CLAUDE.md) — phạm vi & ranh giới dự án; nguồn sự thật cho §1.5 ràng buộc.
-- [`00-quy-chuan.md`](00-quy-chuan.md) — quy chuẩn tài liệu (đặc biệt §5 ID, §6 RFC 2119, §12.3 đo lường).
+- [`00-quy-chuan.md`](00-quy-chuan.md) — quy chuẩn tài liệu (đặc biệt §2 chuẩn nền & từ khoá, §5 ID, §10 đo lường).
 - [`../agents.md`](../agents.md) — chỉ dẫn cho agent; §3.1 nội dung tối thiểu SRS.
 - [`../context/01-muc-tieu-nghien-cuu-ai.md`](../context/01-muc-tieu-nghien-cuu-ai.md) — hướng nghiên cứu AI, khung thí nghiệm α/β/γ, chỉ số M1–M6.
 - [`../context/02-ke-hoach-chuan-bi-nghien-cuu.md`](../context/02-ke-hoach-chuan-bi-nghien-cuu.md) — kế hoạch chuẩn bị; schema VACS; phạm vi verifier.
