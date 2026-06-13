@@ -19,7 +19,16 @@ mục `doc/`. Mục tiêu: bộ tài liệu **đầy đủ, nhất quán, kiểm
    từ khoá nghĩa vụ (PHẢI/NÊN/CÓ THỂ), diagram, traceability.
 3. Toàn bộ các file đã hoàn thành (không phải bản nháp) trong `SDLC/` —
    để giữ tính nhất quán liên tài liệu.
-4. Các ghi chú trong `doc/context/` (nếu có) — bối cảnh nghiệp vụ chi tiết.
+4. Các tài liệu trong `doc/context/`:
+   - [`context/GLOSSARY.md`](context/GLOSSARY.md) — **thuật ngữ dùng chung** (nguồn
+     sự thật duy nhất; liên kết về đây, **không nhân bản** trong tài liệu khác).
+   - [`context/DOMAIN-MAP.md`](context/DOMAIN-MAP.md) — **bản đồ miền & ma trận truy
+     ngược** (UC ↔ FR ↔ NFR ↔ AI).
+   - [`context/PROJECT-STATE.md`](context/PROJECT-STATE.md) — **trạng thái dự án**,
+     giai đoạn hiện tại, quyết định đang mở, gap cần bổ sung.
+   - [`context/01-muc-tieu-nghien-cuu-ai.md`](context/01-muc-tieu-nghien-cuu-ai.md),
+     [`context/02-ke-hoach-chuan-bi-nghien-cuu.md`](context/02-ke-hoach-chuan-bi-nghien-cuu.md)
+     — bối cảnh & lộ trình nghiên cứu AI.
 
 **Không bắt đầu viết** nếu một trong bốn mục trên chưa được đọc. Nếu một tài
 liệu phụ thuộc còn rỗng, **dừng lại và hỏi người dùng** thay vì tự suy đoán.
@@ -44,31 +53,31 @@ theo lượt sau, và **không bỏ qua bước**:
 
 Diễn giải:
 
-| # | File | Phụ thuộc (đọc trước) |
-| --- | --- | --- |
-| 00 | `00-quy-chuan.md` | (gốc) |
-| 01 | `01-srs.md` | `CLAUDE.md` §1, `context/` |
-| 02 | `02-hld.md` | `01-srs.md` |
-| 03 | `03-lld.md` | `02-hld.md` |
-| 04 | `04-database-design.md` | `01-srs.md`, `03-lld.md` |
-| 05 | `05-api-specification.md` | `03-lld.md`, `04-database-design.md` |
-| 06 | `06-ui-ux-flow-specification.md` | `01-srs.md`, `05-api-specification.md` |
-| 07 | `07-security-permission-design.md` | `01-srs.md` (Use Case), `04-database-design.md`, `05-api-specification.md` |
-| 08 | `08-test-plan-acceptance-criteria.md` | `01-srs.md`, `05-api-specification.md`, `06-ui-ux-flow-specification.md` |
-| 09 | `09-deployment-operation-standard.md` | `02-hld.md`, `07-security-permission-design.md` |
-| 10 | `10-architecture-decision-record.md` | bắt đầu từ ADR-001 song song với 01–03 |
-| 11 | `11-project-task-breakdown.md` | `02-hld.md`, `08-test-plan-acceptance-criteria.md` |
+| #   | File                                  | Phụ thuộc (đọc trước)                                                      |
+| --- | ------------------------------------- | -------------------------------------------------------------------------- |
+| 00  | `00-quy-chuan.md`                     | (gốc)                                                                      |
+| 01  | `01-srs.md`                           | `CLAUDE.md` §1, `context/`                                                 |
+| 02  | `02-hld.md`                           | `01-srs.md`                                                                |
+| 03  | `03-lld.md`                           | `02-hld.md`                                                                |
+| 04  | `04-database-design.md`               | `01-srs.md`, `03-lld.md`                                                   |
+| 05  | `05-api-specification.md`             | `03-lld.md`, `04-database-design.md`                                       |
+| 06  | `06-ui-ux-flow-specification.md`      | `01-srs.md`, `05-api-specification.md`                                     |
+| 07  | `07-security-permission-design.md`    | `01-srs.md` (Use Case), `04-database-design.md`, `05-api-specification.md` |
+| 08  | `08-test-plan-acceptance-criteria.md` | `01-srs.md`, `05-api-specification.md`, `06-ui-ux-flow-specification.md`   |
+| 09  | `09-deployment-operation-standard.md` | `02-hld.md`, `07-security-permission-design.md`                            |
+| 10  | `10-architecture-decision-record.md`  | bắt đầu từ ADR-001 song song với 01–03                                     |
+| 11  | `11-project-task-breakdown.md`        | `02-hld.md`, `08-test-plan-acceptance-criteria.md`                         |
 
 ---
 
 ## 3. Nội dung tối thiểu của từng file
 
-Đây là *nội dung tối thiểu* mỗi file phải có. Bố cục chung (bảng metadata, lịch
+Đây là _nội dung tối thiểu_ mỗi file phải có. Bố cục chung (bảng metadata, lịch
 sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md#4-cấu-trúc-chung-của-một-tài-liệu-sdlc).
 
 ### 3.1. `01-srs.md` — Software Requirements Specification
 
-- **Bối cảnh & các bên liên quan** (4 nhóm người dùng đã chốt).
+- **Bối cảnh & các bên liên quan** (6 nhóm người dùng nghiệp vụ + vai trò kỹ thuật SysAdmin).
 - **Đặc tả use case** — mỗi use case có ID `UC-XXX`, actor chính, tiền điều
   kiện, luồng chính, luồng phụ, hậu điều kiện.
 - **Yêu cầu chức năng** `FR-XXX` — phát biểu theo "Hệ thống **PHẢI** ..." (xem
@@ -79,9 +88,10 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
   đánh giá định lượng** kèm phương pháp đo & ngưỡng tối thiểu.
 - **Ràng buộc & giả định** — bao gồm: sandbox thanh toán, người duyệt AI output,
   miễn/giảm học phí ngoài phạm vi.
-- **Glossary** — thuật ngữ học vụ tiếng Việt (học phần, lớp học phần, học kỳ,
-  tín chỉ, chương trình, ...).
-- **Traceability matrix sơ bộ** — UC ↔ FR.
+- **Glossary** — **không lặp trong SRS**; thuật ngữ dùng chung được duy trì tại
+  [`context/GLOSSARY.md`](context/GLOSSARY.md). SRS liên kết về đó (xem `ADR-002`).
+- **Traceability matrix** — duy trì tại [`context/DOMAIN-MAP.md`](context/DOMAIN-MAP.md)
+  (UC ↔ FR ↔ NFR ↔ AI), **không** đặt trong SRS (xem `ADR-002`).
 
 > Mỗi yêu cầu phải **kiểm chứng được**. Tránh từ "nhanh", "thân thiện", "dễ
 > dùng" mà không có số. Ví dụ tốt: "thời gian phản hồi gợi ý môn ≤ 3s ở phân vị
@@ -96,7 +106,7 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 - **Chiến lược dữ liệu** — nguồn sự thật duy nhất cho dữ liệu học vụ.
 - **Chiến lược AI** — RAG, prompt template, nguồn tri thức, kiểm soát chất
   lượng, người duyệt.
-- **Chiến lược bảo mật** — phân quyền theo vai trò (4 nhóm người dùng).
+- **Chiến lược bảo mật** — phân quyền theo vai trò (6 nhóm nghiệp vụ + SysAdmin).
 - **Các quyết định kiến trúc lớn** — link sang `10-architecture-decision-record.md`.
 - **Mapping FR/NFR ↔ container**.
 
@@ -132,7 +142,7 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 
 ### 3.6. `06-ui-ux-flow-specification.md`
 
-- **Bản đồ màn hình** cho 4 nhóm người dùng.
+- **Bản đồ màn hình** cho 6 nhóm người dùng nghiệp vụ + SysAdmin.
 - **User flow** — sơ đồ luồng (Mermaid `flowchart`) cho các use case chính.
 - **Wireframe / low-fi mockup** — nhúng ảnh hoặc liên kết Figma; nếu chưa có,
   mô tả bằng text + bố cục dạng cây.
@@ -142,7 +152,7 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 
 ### 3.7. `07-security-permission-design.md`
 
-- **Mô hình phân quyền** — RBAC tối thiểu cho 4 vai trò; cân nhắc ABAC cho các
+- **Mô hình phân quyền** — RBAC tối thiểu cho các vai trò (xem [`SDLC/01-srs.md §7`](SDLC/01-srs.md#7-actor-và-vai-trò) — 8 vai trò); cân nhắc ABAC cho các
   điều kiện theo ngữ cảnh (giảng viên chỉ thấy lớp mình dạy, v.v.).
 - **Ma trận quyền** — vai trò × hành động × tài nguyên.
 - **Xác thực** — phương thức (email + mật khẩu, SSO trường, ...).
@@ -194,10 +204,10 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 4. **Diagram dùng Mermaid** khi có thể (xem `00-quy-chuan.md §diagram`).
 5. **Bảng dùng cho danh sách có cấu trúc** (≥ 3 cột, ≥ 3 hàng); danh sách ngắn
    thì dùng bullet.
-6. **Không sao chép văn bản** giữa các tài liệu — *liên kết*, đừng *nhân bản*.
+6. **Không sao chép văn bản** giữa các tài liệu — _liên kết_, đừng _nhân bản_.
    Nếu một thông tin xuất hiện ở 2 nơi, sau vài lần sửa hai bản sẽ lệch nhau.
 7. **Tiếng Việt là ngôn ngữ chính**; thuật ngữ tiếng Anh giữ nguyên (in
-   *nghiêng* lần đầu, kèm chú thích).
+   _nghiêng_ lần đầu, kèm chú thích).
 
 ---
 
@@ -205,7 +215,7 @@ sử thay đổi, tham chiếu) xem [`00-quy-chuan.md §4`](SDLC/00-quy-chuan.md
 
 Trước khi đánh dấu một tài liệu là "đã xong", kiểm tra:
 
-- [ ] Có **bảng §1.1 *Metadata*** và **bảng §1.2 *Lịch sử thay đổi*** ở đầu
+- [ ] Có **bảng §1.1 _Metadata_** và **bảng §1.2 _Lịch sử thay đổi_** ở đầu
       file đúng [`00-quy-chuan.md §4.1`-`§4.2`](SDLC/00-quy-chuan.md#4-cấu-trúc-chung-của-một-tài-liệu-sdlc).
 - [ ] `Phiên bản` & `Ngày cập nhật` trong bảng metadata khớp với dòng mới nhất
       của bảng lịch sử thay đổi.
@@ -217,7 +227,7 @@ Trước khi đánh dấu một tài liệu là "đã xong", kiểm tra:
 - [ ] Không có TODO/`[?]`/`...` còn sót.
 - [ ] Diagram render được (kiểm tra bằng cách preview Markdown).
 - [ ] Đã cập nhật `changelog` ở cuối file.
-- [ ] Đã cập nhật bảng traceability ở `01-srs.md` nếu thêm/đổi yêu cầu.
+- [ ] Đã cập nhật bảng traceability ở [`context/DOMAIN-MAP.md`](context/DOMAIN-MAP.md) nếu thêm/đổi yêu cầu.
 
 ---
 
@@ -239,11 +249,11 @@ Một câu hỏi rõ ràng tốt hơn một trang tài liệu phải viết lạ
 
 ## 7. Anti-pattern cần tránh
 
-| Anti-pattern | Tại sao tránh |
-| --- | --- |
-| Viết "Hệ thống thân thiện, dễ sử dụng" | Không đo được. Thay bằng tiêu chí cụ thể. |
-| Sao chép cả khối use case từ 01 sang 06 | Hai bản sẽ lệch sau vài lần sửa. Hãy *liên kết*. |
-| Tự thêm tính năng "cho hoàn thiện" | Phá vỡ phạm vi đã chốt (`CLAUDE.md §1.5`). |
-| Đặt ID `FR-1`, `FR-2` không zero-pad | Sắp xếp lộn xộn khi vượt 10. Dùng `FR-001`. |
-| Viết AI không kèm chỉ số đánh giá | Phá vỡ tiêu chí thành công (`CLAUDE.md §1.5`). |
-| Sinh tài liệu "đầy đủ" mà chưa đọc phụ thuộc | Mâu thuẫn liên tài liệu. Hỏi trước. |
+| Anti-pattern                                 | Tại sao tránh                                    |
+| -------------------------------------------- | ------------------------------------------------ |
+| Viết "Hệ thống thân thiện, dễ sử dụng"       | Không đo được. Thay bằng tiêu chí cụ thể.        |
+| Sao chép cả khối use case từ 01 sang 06      | Hai bản sẽ lệch sau vài lần sửa. Hãy _liên kết_. |
+| Tự thêm tính năng "cho hoàn thiện"           | Phá vỡ phạm vi đã chốt (`CLAUDE.md §1.5`).       |
+| Đặt ID `FR-1`, `FR-2` không zero-pad         | Sắp xếp lộn xộn khi vượt 10. Dùng `FR-001`.      |
+| Viết AI không kèm chỉ số đánh giá            | Phá vỡ tiêu chí thành công (`CLAUDE.md §1.5`).   |
+| Sinh tài liệu "đầy đủ" mà chưa đọc phụ thuộc | Mâu thuẫn liên tài liệu. Hỏi trước.              |
