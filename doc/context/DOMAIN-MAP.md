@@ -9,7 +9,7 @@
 | Tên tài liệu       | Bản đồ miền & ma trận truy ngược (_Domain map & traceability_)                                            |
 | Mã tài liệu        | DOMAIN-MAP                                                                                                 |
 | Dự án              | Nền tảng tích hợp hỗ trợ tổ chức đào tạo (NCKH_1)                                                          |
-| Phiên bản          | v0.1.0                                                                                                     |
+| Phiên bản          | v0.2.0                                                                                                     |
 | Trạng thái         | Draft                                                                                                      |
 | Người viết         | Hiếu                                                                                                       |
 | Người duyệt        | (chưa duyệt)                                                                                               |
@@ -19,9 +19,10 @@
 
 ### 1.2. Lịch sử thay đổi (Changelog)
 
-| Phiên bản | Ngày       | Tác giả | Thay đổi                                                                                         |
-| :-------- | :--------- | :------ | :----------------------------------------------------------------------------------------------- |
-| 0.1.0     | 2026-06-13 | Hiếu    | Tạo bản đồ miền; chuyển ma trận truy ngược từ `01-srs.md §19` về đây (theo ADR-002).             |
+| Phiên bản | Ngày       | Tác giả  | Thay đổi                                                                                         |
+| :-------- | :--------- | :------- | :----------------------------------------------------------------------------------------------- |
+| 0.2.0     | 2026-06-13 | AI Agent | Đồng bộ `01-srs.md` v0.5.0: thêm UC-017/018, FR-025/026 và cập nhật ma trận truy ngược.          |
+| 0.1.0     | 2026-06-13 | Hiếu     | Tạo bản đồ miền; chuyển ma trận truy ngược từ `01-srs.md §19` về đây (theo ADR-002).             |
 
 ---
 
@@ -53,9 +54,9 @@ Chi tiết: [`01-srs.md §4.3`](../SDLC/01-srs.md#43-tám-nhóm-bài-toán-con).
 | #   | Nhóm bài toán                     | UC chính                | Năng lực AI       |
 | :-- | :-------------------------------- | :---------------------- | :---------------- |
 | 1   | Hỗ trợ kế hoạch học tập sinh viên | UC-001, UC-002, UC-003  | AI-001, AI-002    |
-| 2   | Tổ chức & giám sát đào tạo        | UC-004, UC-005          | AI-003            |
+| 2   | Tổ chức & giám sát đào tạo        | UC-004, UC-005, UC-017  | AI-003            |
 | 3   | Tài chính học vụ (sandbox)        | UC-007, UC-008          | AI-008            |
-| 4   | AI xuyên suốt                     | (mọi UC có AI)          | AI-001 … AI-008   |
+| 4   | AI xuyên suốt                     | UC-015 + mọi UC có AI   | AI-001 … AI-008   |
 | 5   | Quản lý kết quả học tập           | UC-009, UC-010          | AI-005            |
 | 6   | Tổ chức khảo thí                  | UC-011, UC-012          | AI-006            |
 | 7   | Phân tích & báo cáo cho lãnh đạo  | UC-016                  | AI-003, AI-007    |
@@ -95,9 +96,9 @@ Sơ đồ ER mức cao: [`01-srs.md §9`](../SDLC/01-srs.md#9-mô-hình-dữ-li�
 
 | Use Case                                                  | Yêu cầu chức năng liên quan            | Yêu cầu phi chức năng liên quan | Yêu cầu AI liên quan                                                          |
 | :-------------------------------------------------------- | :------------------------------------- | :------------------------------ | :--------------------------------------------------------------------------- |
-| [UC-001](../SDLC/01-srs.md#uc-001) Gợi ý môn học          | FR-004, FR-007                         | NFR-002, NFR-004                | [AI-001](../SDLC/01-srs.md#ai-001)                                           |
+| [UC-001](../SDLC/01-srs.md#uc-001) Gợi ý môn học          | FR-004, FR-007, FR-025                 | NFR-002, NFR-004                | [AI-001](../SDLC/01-srs.md#ai-001)                                           |
 | [UC-002](../SDLC/01-srs.md#uc-002) Sinh thời khoá biểu    | FR-006, FR-007, FR-019, FR-020         | NFR-003, NFR-004, NFR-015       | [AI-002](../SDLC/01-srs.md#ai-002)                                           |
-| [UC-003](../SDLC/01-srs.md#uc-003) Duyệt kế hoạch         | FR-002, FR-017                         | NFR-001                         | —                                                                            |
+| [UC-003](../SDLC/01-srs.md#uc-003) Duyệt kế hoạch         | FR-002, FR-017, FR-025                 | NFR-001                         | —                                                                            |
 | [UC-004](../SDLC/01-srs.md#uc-004) Quản lý lớp            | FR-006, FR-019, FR-020, FR-021, FR-024 | NFR-001, NFR-009                | —                                                                            |
 | [UC-005](../SDLC/01-srs.md#uc-005) Cảnh báo bất thường    | FR-017, FR-021                         | NFR-001, NFR-011                | [AI-003](../SDLC/01-srs.md#ai-003)                                           |
 | [UC-006](../SDLC/01-srs.md#uc-006) Đăng ký học phần       | FR-004, FR-007, FR-008, FR-019         | NFR-001, NFR-004, NFR-007       | —                                                                            |
@@ -109,10 +110,12 @@ Sơ đồ ER mức cao: [`01-srs.md §9`](../SDLC/01-srs.md#9-mô-hình-dữ-li�
 | [UC-012](../SDLC/01-srs.md#uc-012) Phân phòng/giám thị    | FR-015, FR-020                         | NFR-001                         | —                                                                            |
 | [UC-013](../SDLC/01-srs.md#uc-013) Khảo sát               | FR-016                                 | NFR-007, NFR-008                | —                                                                            |
 | [UC-014](../SDLC/01-srs.md#uc-014) Xem đánh giá           | FR-016, FR-023                         | NFR-001, NFR-007                | [AI-007](../SDLC/01-srs.md#ai-007)                                           |
-| [UC-015](../SDLC/01-srs.md#uc-015) Hỏi đáp học vụ         | —                                      | NFR-002, NFR-015                | [AI-004](../SDLC/01-srs.md#ai-004)                                           |
+| [UC-015](../SDLC/01-srs.md#uc-015) Hỏi đáp học vụ         | FR-026                                 | NFR-002, NFR-015                | [AI-004](../SDLC/01-srs.md#ai-004)                                           |
 | [UC-016](../SDLC/01-srs.md#uc-016) Dashboard lãnh đạo     | FR-002, FR-013, FR-023                 | NFR-001, NFR-007                | [AI-003](../SDLC/01-srs.md#ai-003), [AI-007](../SDLC/01-srs.md#ai-007)       |
+| [UC-017](../SDLC/01-srs.md#uc-017) Quản lý CTĐT/học phần  | FR-004, FR-005, FR-024                 | NFR-001, NFR-007, NFR-009       | —                                                                            |
+| [UC-018](../SDLC/01-srs.md#uc-018) Quản trị tài khoản     | FR-003, FR-024                         | NFR-007, NFR-009                | —                                                                            |
 
-> Ghi chú phủ FR: FR-001 và FR-002 áp dụng cho **tất cả UC** (xác thực/phân quyền). FR-003 (quản trị tài khoản) và FR-005 (quản lý học phần) hiện chưa có UC chuyên biệt làm actor chính — xem khuyến nghị bổ sung UC cho SysAdmin và Khoa trong [`PROJECT-STATE.md`](PROJECT-STATE.md).
+> Ghi chú phủ FR: FR-001 và FR-002 áp dụng cho **tất cả UC** (xác thực/phân quyền). Từ `01-srs.md` v0.5.0, các FR trước đây thiếu UC chuyên biệt (FR-003, FR-005) đã được phủ bởi UC-018 và UC-017; FR-025/FR-026 bổ sung phủ kế hoạch học tập và hỏi đáp học vụ.
 
 ---
 

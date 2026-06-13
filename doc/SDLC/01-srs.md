@@ -9,18 +9,19 @@
 | Tên tài liệu       | Đặc tả Yêu cầu Phần mềm (_Software Requirements Specification_)                                                                                                                                                                                                    |
 | Mã tài liệu        | 01-srs                                                                                                                                                                                                                                                             |
 | Dự án              | Nền tảng tích hợp hỗ trợ tổ chức đào tạo (NCKH_1)                                                                                                                                                                                                                  |
-| Phiên bản          | v0.4.0                                                                                                                                                                                                                                                             |
+| Phiên bản          | v0.5.0                                                                                                                                                                                                                                                             |
 | Trạng thái         | Draft                                                                                                                                                                                                                                                              |
 | Người viết         | Hiếu                                                                                                                                                                                                                                                               |
 | Người duyệt        | (chưa duyệt)                                                                                                                                                                                                                                                       |
 | Ngày tạo           | 2026-06-02                                                                                                                                                                                                                                                         |
 | Ngày cập nhật      | 2026-06-13                                                                                                                                                                                                                                                         |
-| Tài liệu liên quan | [`../../CLAUDE.md`](../../CLAUDE.md), [`00-quy-chuan.md`](00-quy-chuan.md), [`../context/01-muc-tieu-nghien-cuu-ai.md`](../context/01-muc-tieu-nghien-cuu-ai.md), [`../context/02-ke-hoach-chuan-bi-nghien-cuu.md`](../context/02-ke-hoach-chuan-bi-nghien-cuu.md) |
+| Tài liệu liên quan | [`../../CLAUDE.md`](../../CLAUDE.md), [`00-quy-chuan.md`](00-quy-chuan.md), [`../context/PROJECT-STATE.md`](../context/PROJECT-STATE.md), [`../context/DOMAIN-MAP.md`](../context/DOMAIN-MAP.md), [`../context/GLOSSARY.md`](../context/GLOSSARY.md), [`../context/01-muc-tieu-nghien-cuu-ai.md`](../context/01-muc-tieu-nghien-cuu-ai.md), [`../context/02-ke-hoach-chuan-bi-nghien-cuu.md`](../context/02-ke-hoach-chuan-bi-nghien-cuu.md), [`10-architecture-decision-record.md`](10-architecture-decision-record.md) |
 
 ### 1.2. Lịch sử thay đổi (Changelog)
 
 | Phiên bản | Ngày       | Tác giả           | Thay đổi                                                                                                                                                                                                                                        |
 | :-------- | :--------- | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0.5.0     | 2026-06-13 | AI Agent          | Bổ sung FR/UC còn thiếu cho kế hoạch học tập, hỏi đáp học vụ, quản lý CTĐT/học phần và SysAdmin; thêm Open Questions; đồng bộ chuẩn tham chiếu.                                                                                                  |
 | 0.4.0     | 2026-06-13 | Khanh             | Gỡ §18 Glossary và §19 Ma trận truy ngược khỏi SRS (chuyển sang `context/GLOSSARY.md` & `context/DOMAIN-MAP.md`); đổi §20→§18 Tham chiếu; theo ADR-002.                                                                                         |
 | 0.3.0     | 2026-06-13 | Khanh, AI Agent   | Tái cấu trúc theo mục lục mới; chuyển FR/NFR/AI/BR/giả định sang dạng bảng; thêm Tổng quan, Mục tiêu, Phạm vi, Mô hình dữ liệu mức cao, Use Case tổng quan, Phân quyền, Luồng nghiệp vụ, Trạng thái dữ liệu; sửa lỗi tham chiếu NFR-024→FR-024. |
 | 0.2.0     | 2026-06-03 | team-architecture | Thêm FR-019–FR-024 (học kỳ, phòng, phân công GV, đề thi, xuất báo cáo, audit log); thêm NFR-012–NFR-015; bổ sung luồng ngoại lệ UC-003, UC-013; mở rộng glossary; cập nhật ma trận truy ngược.                                                  |
@@ -47,7 +48,8 @@
 15. [Phân quyền chức năng](#15-phân-quyền-chức-năng)
 16. [Luồng nghiệp vụ chính](#16-luồng-nghiệp-vụ-chính)
 17. [Trạng thái dữ liệu quan trọng](#17-trạng-thái-dữ-liệu-quan-trọng)
-18. [Tham chiếu](#18-tham-chiếu)
+18. [Open Questions](#18-open-questions)
+19. [Tham chiếu](#19-tham-chiếu)
 
 ---
 
@@ -67,7 +69,7 @@ Tài liệu này tuân theo RFC 2119 / RFC 8174 ([`00-quy-chuan.md §2`](00-quy-
 
 ### 3.4. Tài liệu tham chiếu
 
-Xem [§18 Tham chiếu](#18-tham-chiếu).
+Xem [§19 Tham chiếu](#19-tham-chiếu).
 
 ---
 
@@ -88,9 +90,9 @@ Nền tảng lấy **dữ liệu học vụ thống nhất** làm trung tâm (ng
 | #   | Nhóm bài toán                     | UC / năng lực AI liên quan              |
 | :-- | :-------------------------------- | :-------------------------------------- |
 | 1   | Hỗ trợ kế hoạch học tập sinh viên | UC-001, UC-002, UC-003 · AI-001, AI-002 |
-| 2   | Tổ chức & giám sát đào tạo        | UC-004, UC-005 · AI-003                 |
+| 2   | Tổ chức & giám sát đào tạo        | UC-004, UC-005, UC-017 · AI-003         |
 | 3   | Tài chính học vụ (sandbox)        | UC-007, UC-008 · AI-008                 |
-| 4   | AI xuyên suốt                     | AI-001 … AI-008                         |
+| 4   | AI xuyên suốt                     | UC-015 · AI-001 … AI-008                |
 | 5   | Quản lý kết quả học tập           | UC-009, UC-010 · AI-005                 |
 | 6   | Tổ chức khảo thí                  | UC-011, UC-012 · AI-006                 |
 | 7   | Phân tích & báo cáo cho lãnh đạo  | UC-016 · AI-003, AI-007                 |
@@ -173,7 +175,7 @@ Nền tảng lấy **dữ liệu học vụ thống nhất** làm trung tâm (ng
 | `CON-002` | Phạm vi triển khai trong một khoa/trường; không multi-tenant.                            | [`BR-006`](#14-business-rules)                                                                         |
 | `CON-003` | LLM backbone dùng API model có sẵn (không pre-train, không fine-tune ở giai đoạn chính). | [`../context/01-muc-tieu-nghien-cuu-ai.md §6`](../context/01-muc-tieu-nghien-cuu-ai.md#6-llm-backbone) |
 | `CON-004` | Verifier trong luồng AI sinh lịch là hàm thuần kiểm tra, không phải solver.              | [`BR-008`](#14-business-rules)                                                                         |
-| `CON-005` | Tài liệu, mã nguồn, commit message bằng tiếng Anh; tài liệu nghiệp vụ bằng tiếng Việt.   | [`../../CLAUDE.md §3.1`](../../CLAUDE.md)                                                              |
+| `CON-005` | Tài liệu viết bằng tiếng Việt; mã nguồn, định danh và commit message bằng tiếng Anh.     | [`../../CLAUDE.md §3.1`](../../CLAUDE.md)                                                              |
 
 ### 8.3. Phụ thuộc
 
@@ -234,14 +236,14 @@ _Sơ đồ trên mô tả các thực thể cốt lõi của miền học vụ v
 | :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- | :----- |
 | <a id="fr-001"></a>FR-001 | Cho phép đăng nhập bằng email + mật khẩu; hỗ trợ thêm SSO theo cổng xác thực của trường nếu tồn tại.                                                                                                               | PHẢI (SSO: NÊN)   | Tất cả |
 | <a id="fr-002"></a>FR-002 | Gán vai trò cho từng tài khoản (`student`, `lecturer`, `academic_advisor`, `department`, `training_office`, `examination_office`, `leadership`, `sysadmin`) và kiểm tra quyền trước mỗi thao tác thay đổi dữ liệu. | PHẢI              | Tất cả |
-| <a id="fr-003"></a>FR-003 | Cho phép SysAdmin tạo/vô hiệu hoá/đổi vai trò tài khoản; KHÔNG ĐƯỢC cho SysAdmin đọc/sửa dữ liệu nghiệp vụ (điểm, học phí, khảo sát).                                                                              | PHẢI / KHÔNG ĐƯỢC | —      |
+| <a id="fr-003"></a>FR-003 | Cho phép SysAdmin tạo/vô hiệu hoá/đổi vai trò tài khoản; KHÔNG ĐƯỢC cho SysAdmin đọc/sửa dữ liệu nghiệp vụ (điểm, học phí, khảo sát).                                                                              | PHẢI / KHÔNG ĐƯỢC | [UC-018](#uc-018) |
 
 ### 10.2. Chương trình & học phần
 
 | Mã                        | Yêu cầu                                                                                                                        | Mức  | UC                                                      |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------------------------- | :--- | :------------------------------------------------------ |
-| <a id="fr-004"></a>FR-004 | Lưu trữ chương trình đào tạo (danh sách học phần, số tín chỉ, tiên quyết, tương đương, phân loại); cho Khoa/Bộ môn tạo và sửa. | PHẢI | [UC-001](#uc-001), [UC-002](#uc-002), [UC-006](#uc-006) |
-| <a id="fr-005"></a>FR-005 | Cho Khoa tạo/sửa/vô hiệu hoá học phần (mã, tên, số tín chỉ, mô tả, tiên quyết, số tiết LT/TH).                                 | PHẢI | —                                                       |
+| <a id="fr-004"></a>FR-004 | Lưu trữ chương trình đào tạo (danh sách học phần, số tín chỉ, tiên quyết, tương đương, phân loại); cho Khoa/Bộ môn tạo và sửa. | PHẢI | [UC-001](#uc-001), [UC-002](#uc-002), [UC-006](#uc-006), [UC-017](#uc-017) |
+| <a id="fr-005"></a>FR-005 | Cho Khoa tạo/sửa/vô hiệu hoá học phần (mã, tên, số tín chỉ, mô tả, tiên quyết, số tiết LT/TH).                                 | PHẢI | [UC-017](#uc-017)                                                       |
 
 ### 10.3. Lớp học phần, học kỳ, phòng & phân công
 
@@ -252,10 +254,11 @@ _Sơ đồ trên mô tả các thực thể cốt lõi của miền học vụ v
 | <a id="fr-020"></a>FR-020 | Lưu danh sách phòng học/phòng thi (mã, toà nhà, sức chứa, loại `lecture`/`lab`/`exam`); từ chối xếp lịch nếu phòng đã dùng cùng tiết–thứ.                                                                                  | PHẢI                 | [UC-004](#uc-004), [UC-011](#uc-011), [UC-012](#uc-012) |
 | <a id="fr-021"></a>FR-021 | Cho Khoa/Phòng Đào tạo phân công giảng viên cho lớp; từ chối nếu giảng viên trùng lịch; cảnh báo khi tổng tiết/tuần vượt ngưỡng (mặc định 20 tiết/tuần).                                                                   | PHẢI (cảnh báo: NÊN) | [UC-004](#uc-004), [UC-005](#uc-005)                    |
 
-### 10.4. Đăng ký học phần & danh sách chờ
+### 10.4. Kế hoạch học tập, đăng ký học phần & danh sách chờ
 
 | Mã                        | Yêu cầu                                                                                                                                                                            | Mức  | UC                |
 | :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--- | :---------------- |
+| <a id="fr-025"></a>FR-025 | Cho sinh viên tạo/sửa/lưu kế hoạch học tập ở trạng thái `draft`, gửi CVHT duyệt, nhận kết quả `approved`/`rejected` kèm nhận xét; chỉ CVHT được phân công mới được duyệt/trả về kế hoạch. | PHẢI | [UC-001](#uc-001), [UC-003](#uc-003) |
 | <a id="fr-007"></a>FR-007 | Cho sinh viên đăng ký lớp học phần trong thời gian đăng ký; từ chối nếu hết chỗ, thiếu tiên quyết, trùng lịch, vượt giới hạn tín chỉ/kỳ; xử lý _idempotent_ với `Idempotency-Key`. | PHẢI | [UC-006](#uc-006) |
 | <a id="fr-008"></a>FR-008 | Cho sinh viên vào danh sách chờ khi lớp hết chỗ; thông báo cho sinh viên đầu danh sách khi có chỗ trống.                                                                           | NÊN  | [UC-006](#uc-006) |
 
@@ -288,19 +291,20 @@ _Sơ đồ trên mô tả các thực thể cốt lõi của miền học vụ v
 | :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- | :----------------------------------- |
 | <a id="fr-016"></a>FR-016 | Tổ chức khảo sát ẩn danh cuối kỳ; KHÔNG ĐƯỢC lưu liên kết danh tính với câu trả lời; chỉ công bố khi số phản hồi ≥ ngưỡng (mặc định 5/lớp, cấu hình được). | PHẢI / KHÔNG ĐƯỢC | [UC-013](#uc-013), [UC-014](#uc-014) |
 
-### 10.9. Thông báo
+### 10.9. Thông báo & hỏi đáp học vụ
 
 | Mã                        | Yêu cầu                                                                                                                                                | Mức               | UC                                   |
 | :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------- | :----------------------------------- |
 | <a id="fr-017"></a>FR-017 | Gửi thông báo trong ứng dụng (_in-app_) cho: điểm công bố, đăng ký thành công/thất bại, kế hoạch được duyệt/trả về, lịch thi công bố, cảnh báo học vụ. | PHẢI              | [UC-003](#uc-003), [UC-009](#uc-009) |
 | <a id="fr-018"></a>FR-018 | Hỗ trợ AI soạn email/thông báo hàng loạt; mọi nội dung AI gửi người dùng cuối PHẢI qua bước duyệt; KHÔNG ĐƯỢC gửi tự động khi chưa duyệt.              | PHẢI / KHÔNG ĐƯỢC | [UC-008](#uc-008)                    |
+| <a id="fr-026"></a>FR-026 | Cung cấp giao diện hỏi đáp học vụ bằng ngôn ngữ tự nhiên; hiển thị câu trả lời kèm trích dẫn nguồn có thể kiểm chứng; KHÔNG ĐƯỢC trả lời khẳng định khi không tìm thấy nguồn phù hợp trong corpus. | PHẢI / KHÔNG ĐƯỢC | [UC-015](#uc-015) |
 
 ### 10.10. Xuất báo cáo & nhật ký kiểm toán
 
 | Mã                        | Yêu cầu                                                                                                                                                                                                                                                     | Mức                   | UC                                                      |
 | :------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- | :------------------------------------------------------ |
 | <a id="fr-023"></a>FR-023 | Cho Lãnh đạo/Phòng Đào tạo/Khoa xuất báo cáo tổng hợp dạng PDF; hỗ trợ thêm xuất CSV/Excel cho dữ liệu bảng.                                                                                                                                                | PHẢI (CSV/Excel: NÊN) | [UC-008](#uc-008), [UC-014](#uc-014), [UC-016](#uc-016) |
-| <a id="fr-024"></a>FR-024 | Tự động ghi nhật ký kiểm toán (xem [`NFR-009`](#nfr-009)) cho mọi thay đổi dữ liệu nghiệp vụ, mọi lần duyệt/từ chối AI output, mọi lần đăng nhập/đăng xuất/đổi mật khẩu. Mỗi bản ghi PHẢI có: timestamp UTC, user ID, vai trò, hành động, ID đối tượng, IP. | PHẢI                  | [UC-004](#uc-004), [UC-009](#uc-009)                    |
+| <a id="fr-024"></a>FR-024 | Tự động ghi nhật ký kiểm toán (xem [`NFR-009`](#nfr-009)) cho mọi thay đổi dữ liệu nghiệp vụ, thay đổi tài khoản/vai trò, mọi lần duyệt/từ chối AI output, mọi lần đăng nhập/đăng xuất/đổi mật khẩu. Mỗi bản ghi PHẢI có: timestamp UTC, user ID, vai trò, hành động, ID đối tượng, IP. | PHẢI                  | [UC-004](#uc-004), [UC-009](#uc-009), [UC-017](#uc-017), [UC-018](#uc-018) |
 
 ### 10.11. Yêu cầu năng lực AI (AI-XXX)
 
@@ -389,9 +393,9 @@ _Phương pháp đo M1/M2:_ chạy cấu hình γ₀–γ₄ trên VACS; mỗi c
 
 | Mã                | Tên                                 | Actor chính                | Nhóm bài toán | FR liên quan                           |
 | :---------------- | :---------------------------------- | :------------------------- | :------------ | :------------------------------------- |
-| [UC-001](#uc-001) | Gợi ý môn học theo chương trình     | Sinh viên                  | 1             | FR-004, FR-007                         |
+| [UC-001](#uc-001) | Gợi ý môn học theo chương trình     | Sinh viên                  | 1             | FR-004, FR-007, FR-025                 |
 | [UC-002](#uc-002) | Sinh thời khoá biểu cá nhân hoá     | Sinh viên                  | 1             | FR-006, FR-007, FR-019, FR-020         |
-| [UC-003](#uc-003) | Duyệt kế hoạch học tập (CVHT)       | CVHT                       | 1             | FR-002, FR-017                         |
+| [UC-003](#uc-003) | Duyệt kế hoạch học tập (CVHT)       | CVHT                       | 1             | FR-002, FR-017, FR-025                 |
 | [UC-004](#uc-004) | Quản lý lớp học phần                | Phòng Đào tạo              | 2             | FR-006, FR-019, FR-020, FR-021, FR-024 |
 | [UC-005](#uc-005) | Cảnh báo bất thường đào tạo         | Hệ thống / Phòng Đào tạo   | 2             | FR-017, FR-021                         |
 | [UC-006](#uc-006) | Đăng ký học phần                    | Sinh viên                  | 1             | FR-004, FR-007, FR-008, FR-019         |
@@ -403,8 +407,10 @@ _Phương pháp đo M1/M2:_ chạy cấu hình γ₀–γ₄ trên VACS; mỗi c
 | [UC-012](#uc-012) | Phân phòng và giám thị              | Phòng Khảo thí             | 6             | FR-015, FR-020                         |
 | [UC-013](#uc-013) | Khảo sát đánh giá giảng dạy         | Sinh viên                  | 8             | FR-016                                 |
 | [UC-014](#uc-014) | Xem tổng hợp đánh giá giảng dạy     | GV / Khoa / PĐT / Lãnh đạo | 8             | FR-016, FR-023                         |
-| [UC-015](#uc-015) | Hỏi đáp học vụ có trích dẫn nguồn   | Sinh viên                  | 4             | — (năng lực [AI-004](#ai-004))         |
+| [UC-015](#uc-015) | Hỏi đáp học vụ có trích dẫn nguồn   | Sinh viên                  | 4             | FR-026 + [AI-004](#ai-004)             |
 | [UC-016](#uc-016) | Xem dashboard tổng hợp              | Lãnh đạo                   | 7             | FR-002, FR-013, FR-023                 |
+| [UC-017](#uc-017) | Quản lý chương trình & học phần     | Khoa / Bộ môn              | 2             | FR-004, FR-005, FR-024                 |
+| [UC-018](#uc-018) | Quản trị tài khoản & vai trò        | SysAdmin                   | Kỹ thuật      | FR-003, FR-024                         |
 
 ---
 
@@ -430,7 +436,7 @@ _Phương pháp đo M1/M2:_ chạy cấu hình γ₀–γ₄ trên VACS; mỗi c
 1. Sinh viên mở màn hình lập kế hoạch học kỳ.
 2. Hệ thống lấy dữ liệu: chương trình đào tạo, môn đã hoàn thành, môn đang học, số tín chỉ tích luỹ.
 3. AI phân tích điều kiện tiên quyết, tiến độ còn lại, khả năng xung đột lịch (sơ bộ).
-4. Hệ thống hiển thị danh sách môn gợi ý, xếp theo độ ưu tiên, kèm lý do ngắn gọn (môn tiên quyết cho kỳ sau, môn sắp khoá lớp, ...).
+4. Hệ thống hiển thị danh sách môn gợi ý, xếp theo độ ưu tiên, kèm lý do ngắn gọn (môn tiên quyết cho kỳ sau, môn sắp khóa lớp, môn còn thiếu để đạt tiến độ).
 5. Sinh viên chọn một hoặc nhiều môn để thêm vào kế hoạch nháp.
 6. Hệ thống lưu kế hoạch nháp, chưa gửi CVHT.
 
@@ -452,7 +458,7 @@ _Phương pháp đo M1/M2:_ chạy cấu hình γ₀–γ₄ trên VACS; mỗi c
 
 **Luồng chính:**
 
-1. Sinh viên nhập yêu cầu bằng ngôn ngữ tự nhiên hoặc chọn qua bộ lọc (tránh thứ mấy, không học sau giờ nào, số tín chỉ mong muốn, ...).
+1. Sinh viên nhập yêu cầu bằng ngôn ngữ tự nhiên hoặc chọn qua bộ lọc (tránh thứ mấy, không học sau giờ nào, số tín chỉ mong muốn, ưu tiên buổi học).
 2. Hệ thống chuẩn bị ngữ cảnh: danh sách lớp học phần mở, sở thích và ràng buộc cứng của sinh viên.
 3. AI (γ) suy luận và sinh ra ≥ 1 phương án thời khoá biểu.
 4. Verifier kiểm tra từng phương án: không vi phạm ràng buộc cứng (trùng tiết, tiên quyết, giới hạn tín chỉ, lớp còn chỗ).
@@ -697,7 +703,7 @@ _Phương pháp đo M1/M2:_ chạy cấu hình γ₀–γ₄ trên VACS; mỗi c
 **Luồng chính:**
 
 1. Actor mở màn hình báo cáo đánh giá.
-2. AI tổng hợp: điểm trung bình thang Likert, phân tích cảm xúc nhận xét tự do, phân loại chủ đề (nội dung, phương pháp, tương tác, ...).
+2. AI tổng hợp: điểm trung bình thang Likert, phân tích cảm xúc nhận xét tự do, phân loại chủ đề như nội dung, phương pháp và tương tác.
 3. Hệ thống hiển thị báo cáo theo phạm vi quyền:
    - Giảng viên thấy kết quả lớp mình dạy.
    - Khoa thấy toàn bộ giảng viên trong khoa.
@@ -745,6 +751,55 @@ _Phương pháp đo M1/M2:_ chạy cấu hình γ₀–γ₄ trên VACS; mỗi c
 2. Hệ thống hiển thị: tỉ lệ tốt nghiệp đúng hạn, tải giảng dạy trung bình, hiệu suất chương trình (tỉ lệ hoàn thành môn), xu hướng theo thời gian.
 3. AI sinh tóm tắt định kỳ (tuần/tháng) về bất thường đáng chú ý.
 4. Lãnh đạo có thể xuất báo cáo PDF; không có thao tác nhập/sửa dữ liệu.
+
+### 13.9. Nhóm UC: Quản trị danh mục & tài khoản
+
+#### UC-017 — Quản lý chương trình đào tạo và học phần
+
+<a id="uc-017"></a>
+
+| Thuộc tính     | Giá trị                                                                                              |
+| :------------- | :--------------------------------------------------------------------------------------------------- |
+| Actor chính    | Khoa / Bộ môn                                                                                        |
+| Actor phụ      | Phòng Đào tạo (xem/đối chiếu trước khi mở lớp)                                                       |
+| Tiền điều kiện | Actor đã đăng nhập và có quyền quản lý danh mục đào tạo; dữ liệu khoa/ngành đã được cấu hình.        |
+| Hậu điều kiện  | Chương trình đào tạo và học phần được lưu, sẵn sàng dùng cho gợi ý môn, mở lớp và đăng ký học phần. |
+
+**Luồng chính:**
+
+1. Khoa / Bộ môn mở màn hình quản lý chương trình đào tạo.
+2. Actor tạo hoặc cập nhật chương trình đào tạo: danh sách học phần bắt buộc/tự chọn, số tín chỉ, tiên quyết, học phần tương đương.
+3. Actor tạo hoặc cập nhật học phần: mã, tên, số tín chỉ, mô tả, số tiết lý thuyết/thực hành, trạng thái sử dụng.
+4. Hệ thống kiểm tra mã học phần trùng, vòng lặp tiên quyết, tổng số tín chỉ chương trình và học phần đang được lớp học phần sử dụng.
+5. Actor lưu thay đổi; hệ thống ghi audit log và cập nhật dữ liệu dùng cho các luồng gợi ý, lập kế hoạch, mở lớp.
+
+**Luồng ngoại lệ:**
+
+- _4a._ Mã học phần trùng hoặc tiên quyết tạo vòng lặp → hệ thống từ chối lưu, chỉ rõ mục cần sửa.
+- _4b._ Học phần đang được lớp học phần sử dụng → hệ thống không cho xoá cứng; chỉ cho chuyển trạng thái vô hiệu hoá từ học kỳ sau.
+
+#### UC-018 — Quản trị tài khoản và vai trò
+
+<a id="uc-018"></a>
+
+| Thuộc tính     | Giá trị                                                                                              |
+| :------------- | :--------------------------------------------------------------------------------------------------- |
+| Actor chính    | Quản trị viên hệ thống (SysAdmin)                                                                    |
+| Tiền điều kiện | SysAdmin đã đăng nhập; yêu cầu quản trị tài khoản đã được xác nhận qua quy trình nội bộ của đơn vị.  |
+| Hậu điều kiện  | Tài khoản/vai trò được tạo, cập nhật hoặc vô hiệu hoá; không có dữ liệu nghiệp vụ nào bị đọc/sửa.    |
+
+**Luồng chính:**
+
+1. SysAdmin mở màn hình quản trị tài khoản.
+2. SysAdmin tạo tài khoản mới hoặc nhập danh sách tài khoản từ file mẫu.
+3. SysAdmin gán hoặc thu hồi vai trò trong danh sách được phép: `student`, `lecturer`, `academic_advisor`, `department`, `training_office`, `examination_office`, `leadership`, `sysadmin`.
+4. SysAdmin vô hiệu hoá hoặc kích hoạt lại tài khoản theo yêu cầu hợp lệ.
+5. Hệ thống ghi audit log cho mọi thay đổi tài khoản/vai trò.
+
+**Luồng ngoại lệ:**
+
+- _2a._ Dữ liệu nhập không hợp lệ hoặc email trùng → hệ thống từ chối dòng lỗi, báo rõ lý do.
+- _3a._ SysAdmin cố truy cập dữ liệu nghiệp vụ như điểm, học phí, khảo sát → hệ thống từ chối theo phân quyền mặc định từ chối.
 
 ---
 
@@ -878,7 +933,7 @@ stateDiagram-v2
     approved --> [*]
 ```
 
-_Chỉ kế hoạch `approved` mới dùng để đăng ký chính thức._
+_Kế hoạch `approved` là căn cứ chính thức khi quy trình học vụ yêu cầu CVHT duyệt trước đăng ký; chính sách bắt buộc hay khuyến nghị cần chốt ở [`OPEN-003`](#open-003)._
 
 ### 17.2. Học kỳ
 
@@ -938,15 +993,28 @@ stateDiagram-v2
 
 ---
 
-## 18. Tham chiếu
+## 18. Open Questions
+
+> Các câu hỏi dưới đây cần được chốt trước khi chuyển SRS sang `Review`. Khi đã có quyết định, cập nhật mục liên quan và ghi vào changelog.
+
+| Mã                              | Câu hỏi mở                                                                                                            | Tác động nếu chưa chốt                                                                                      | Liên quan |
+| :------------------------------ | :-------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------- | :-------- |
+| <a id="open-001"></a>OPEN-001 | Nguồn dữ liệu thật của khoa/trường gồm những bộ nào, được phép dùng ở mức nào, và cần ẩn danh ra sao trước khi đưa vào corpus/dataset? | Ảnh hưởng RAG, VACS, kiểm thử AI và khả năng chứng minh định lượng.                                          | `DATA-01`, `RISK-102`, `DEP-002`, `DEP-003` |
+| <a id="open-002"></a>OPEN-002 | Chọn cặp LLM provider, model cụ thể và budget token/tháng nào cho thí nghiệm và vận hành thử?                         | Ảnh hưởng ADR-001, latency, chi phí, rate limit và khả năng tái lập benchmark.                               | `ADR-001`, `DEP-001`, `NFR-015` |
+| <a id="open-003"></a>OPEN-003 | Đăng ký học phần chính thức có bắt buộc kế hoạch học tập đã được CVHT duyệt hay chỉ khuyến nghị?                       | Ảnh hưởng [`UC-003`](#uc-003), [`UC-006`](#uc-006), state machine kế hoạch học tập và tiêu chí nghiệm thu.   | [`FR-025`](#fr-025), [`FR-007`](#fr-007), [§17.1](#171-kế-hoạch-học-tập) |
+| <a id="open-004"></a>OPEN-004 | Các ngưỡng nghiệp vụ chính thức là bao nhiêu: giới hạn tín chỉ/kỳ, ngưỡng lớp thiếu sinh viên, ngưỡng cảnh báo học vụ, hạn công nợ và tải giảng dạy/tuần? | Các giá trị mặc định trong SRS có thể phải đổi khi áp theo quy chế thật; ảnh hưởng rule, test và dashboard. | [`FR-007`](#fr-007), [`FR-013`](#fr-013), [`FR-021`](#fr-021), [`AI-003`](#ai-003), [`AI-008`](#ai-008) |
+
+---
+
+## 19. Tham chiếu
 
 - [`../../CLAUDE.md`](../../CLAUDE.md) — phạm vi & ranh giới dự án; nguồn sự thật cho §1.5 ràng buộc.
 - [`00-quy-chuan.md`](00-quy-chuan.md) — quy chuẩn tài liệu (đặc biệt §2 chuẩn nền & từ khoá, §5 ID, §10 đo lường).
 - [`../agents.md`](../agents.md) — chỉ dẫn cho agent; §3.1 nội dung tối thiểu SRS.
 - [`../context/01-muc-tieu-nghien-cuu-ai.md`](../context/01-muc-tieu-nghien-cuu-ai.md) — hướng nghiên cứu AI, khung thí nghiệm α/β/γ, chỉ số M1–M6.
 - [`../context/02-ke-hoach-chuan-bi-nghien-cuu.md`](../context/02-ke-hoach-chuan-bi-nghien-cuu.md) — kế hoạch chuẩn bị; schema VACS; phạm vi verifier.
-- [`../context/GLOSSARY.md`](../context/GLOSSARY.md) — thuật ngữ dùng chung (tách khỏi SRS §18, theo ADR-002).
-- [`../context/DOMAIN-MAP.md`](../context/DOMAIN-MAP.md) — bản đồ miền & ma trận truy ngược (tách khỏi SRS §19, theo ADR-002).
+- [`../context/GLOSSARY.md`](../context/GLOSSARY.md) — thuật ngữ dùng chung (tách khỏi SRS theo ADR-002).
+- [`../context/DOMAIN-MAP.md`](../context/DOMAIN-MAP.md) — bản đồ miền & ma trận truy ngược (tách khỏi SRS theo ADR-002).
 - [`10-architecture-decision-record.md`](10-architecture-decision-record.md) — ADR-002 (tách glossary & traceability).
 - ISO/IEC/IEEE 29148:2018 — Systems and software engineering — Requirements engineering.
 - RFC 2119 / RFC 8174 — Key words for use in RFCs to Indicate Requirement Levels.
